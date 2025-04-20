@@ -10,6 +10,11 @@
   will-change: filter;
   transition: filter 300ms;
 }
+button.active {
+  font-weight: bold;
+  
+}
+
 
 .logo {
   height: 6em;

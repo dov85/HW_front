@@ -102,14 +102,15 @@ function App() {
 
         {pageButtons.map((page) => (
           <button
-            key={page}
-            name={`page-${page}`}
-            onClick={() => setActivePage(page)}
-            disabled={page === activePage}
-            style={{ fontWeight: page === activePage ? 'bold' : 'normal' }}
-          >
-            {page}
-          </button>
+          key={page}
+          name={`page-${page}`}
+          onClick={() => setActivePage(page)}
+          disabled={page === activePage}
+          className={page === activePage ? 'active' : ''}
+        >
+          {page}
+        </button>
+        
         ))}
 
         <button
