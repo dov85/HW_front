@@ -13,7 +13,7 @@ type Note = {
 };
 
 // App.tsx
-const NOTES_URL = 'http://172.24.171.218:3001/notes';
+const NOTES_URL = 'http://localhost:3001/notes';
 
 const POSTS_PER_PAGE = 10;
 
