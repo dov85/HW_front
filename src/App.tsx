@@ -12,7 +12,9 @@ type Note = {
   content: string;
 };
 
-const NOTES_URL = 'http://localhost:3001/notes';
+// App.tsx
+const NOTES_URL = 'http://172.24.171.218:3001/notes';
+
 const POSTS_PER_PAGE = 10;
 
 function getPageButtons(activePage: number, totalPages: number): number[] {
