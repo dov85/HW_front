@@ -60,7 +60,21 @@ function App() {
       })
       .then((response) => {
         setNotes(response.data);
-        const totalCount = parseInt(response.headers['x-total-count']);
+       const rawCount = response.headers['x-total-count'];
+  
+        if (!rawCount) {
+          console.warn('⚠️ x-total-count header is missing!');
+          setTotalNotes(1);
+          return;
+        }
+  
+        const totalCount = parseInt(rawCount);
+        if (isNaN(totalCount)) {
+          console.warn('⚠️ x-total-count is not a number:', rawCount);
+          setTotalNotes(1);
+          return;
+        }
+  
         setTotalNotes(totalCount);
       })
       .catch((error) => {
