@@ -18,6 +18,9 @@ const NOTES_URL = 'http://localhost:3001/notes';
 const POSTS_PER_PAGE = 10;
 
 function getPageButtons(activePage: number, totalPages: number): number[] {
+  if (totalPages==0){
+    return [1];
+  }
   if (totalPages <= 5) {
     return Array.from({ length: totalPages }, (_, i) => i + 1);
   }
@@ -103,7 +106,7 @@ function App() {
         <button
           name="first"
           onClick={() => setActivePage(1)}
-          disabled={activePage === 1}
+          disabled={activePage === 1||totalPages==0}
         >
           First
         </button>
@@ -111,7 +114,7 @@ function App() {
         <button
           name="previous"
           onClick={() => setActivePage((p) => Math.max(1, p - 1))}
-          disabled={activePage === 1}
+          disabled={activePage === 1||totalPages==0}
         >
           Previous
         </button>
@@ -121,7 +124,7 @@ function App() {
           key={page}
           name={`page-${page}`}
           onClick={() => setActivePage(page)}
-          disabled={page === activePage}
+          disabled={page === activePage||totalPages==0}
           className={page === activePage ? 'active' : ''}
         >
           {page}
@@ -132,7 +135,7 @@ function App() {
         <button
           name="next"
           onClick={() => setActivePage((p) => Math.min(totalPages, p + 1))}
-          disabled={activePage === totalPages}
+          disabled={activePage === totalPages||totalPages==0}
         >
           Next
         </button>
@@ -140,7 +143,7 @@ function App() {
         <button
           name="last"
           onClick={() => setActivePage(totalPages)}
-          disabled={activePage === totalPages}
+          disabled={activePage === totalPages||totalPages==0}
         >
           Last
         </button>
